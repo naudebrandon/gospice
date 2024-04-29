@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Cart
+{% endblock %}
+
+{% block main %}
+    <h1>Cart</h1>
+    <table>
+        <thead>
+            <tr>
+            <th scope="col"></th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Description</th>
+            <th scope="col">Price</th>
+            <th scope="col">Total</th>
+            <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart_items %}
+                <tr>
+                    <td class="small_col"><img class="table_photo" src="{{item['photo']}}" alt="Picture of {{item['description']}}"></image></td>
+                    <td class="small_col">{{item['quantity']}}</td>
+                    <td>{{item['description']}}</td>
+                    <td class="small_col">{{item['price']}}</td>
+                    <td class="small_col">{{item['item_total']}}</td>
+                    <td><a href="/remove_from_cart/{{item['id']}}"><button class="item_remove_btn">Remove from Cart</button></a></td>
+                </tr>
+            {% endfor %}
+                <tr></tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="grand-total"> Total Due: {{total_due}}</td>
+                </tr>
+        </tbody>
+    </table>
+    <form id="order-form" action="/view_cart" method="post">
+        <button id="order-btn" class="btn btn-success" type="submit">Place Order</button>
+    </form>
+
+{% endblock %}
+
+

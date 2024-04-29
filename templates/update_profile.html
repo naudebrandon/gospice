@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Update Profile
+{% endblock %}
+
+{% block main %}
+    <form action="/update_profile" method="post">
+        <div class="mb-3 row">
+            <label for="fullname" class="col-sm-2 col-form-label">Full Name</label>
+            <div class="col-auto">
+              <input type="text"  class="form-control" id="fullname" name="fullname" value="{{fullname}}" required>
+            </div>
+          </div>
+
+          <div class="mb-3 row">
+                <label for="phone" class="col-sm-2 col-form-label">Phone Number</label>
+                <div class="col-auto">
+                    <input type="text"  class="form-control" id="phone" name="phone" value="{{phone_number}}" required>
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label for="building" class="col-sm-2 col-form-label">Building/Apartment/House No.</label>
+                <div class="col-sm-5">
+                  <input type="text"  class="form-control" id="building" name="building" value="{{building_no}}">
+                </div>
+              </div>
+
+              <div class="mb-3 row">
+                <label for="street" class="col-sm-2 col-form-label">Street Address</label>
+                <div class="col-sm-5">
+                  <input type="text"  class="form-control" id="street" name="street" value="{{street_address}}">
+                </div>
+              </div>
+
+              <div class="mb-3 row">
+                <label for="city" class="col-sm-2 col-form-label">City</label>
+                <div class="col-sm-5">
+                  <input type="text"  class="form-control" id="city" name="city" value="{{city}}">
+                </div>
+              </div>
+
+              <div class="mb-3 row">
+                <label for="province" class="col-sm-2 col-form-label">Province</label>
+                <div class="col-sm-5">
+                  <input type="text"  class="form-control" id="province" name="province" value="{{province}}">
+                </div>
+              </div>
+
+              <div class="mb-3 row">
+                <label for="postal" class="col-sm-2 col-form-label">Postal Code</label>
+                <div class="col-auto">
+                  <input type="text"  class="form-control" id="postal" name="postal" value="{{postal_code}}">
+                </div>
+              </div>
+          <button class="btn btn-primary" type="submit">Update Personal Details</button>
+    </form>
+
+{% endblock %}

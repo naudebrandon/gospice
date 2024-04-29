@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+    <div class="grid-container">
+        {% for product in products %}
+            <div class="product">
+                <img src="{{product['photo']}}" alt="Picture of {{ product['description']}}" style="width:100%"></img>
+                <h1>{{ product["description"]}}</h1>
+                <p class="price">{{ product["price"]}}</p>
+                {% if product['qty_left'] < 1 %}
+                    <p><button disabled>SOLD OUT</button></p>
+                {% else %}
+                    <p><a href="/cart/{{product['id']}}"><button>Add to Cart</button></a></p>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

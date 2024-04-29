@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add Product
+{% endblock %}
+
+{% block main %}
+    <h1>Add New Product</h1>
+    <form action="/products" enctype=multipart/form-data method="post">
+
+        <div class="mb-3 row center">
+            <div class="col-auto">
+                <label for="description" class="col-form-label">Product Description</label>
+            </div>
+            <div class="col-auto">
+                <input autocomplete="off" autofocus required class="form-control product_input" id="description" name="description" placeholder="Description" type="text">
+            </div>
+        </div>
+
+        <div class="mb-3 row center">
+            <div class="col-auto">
+                <label for="quantity" class="col-form-label">Add Product Quantity</label>
+            </div>
+            <div class="col-auto ">
+                <input autocomplete="off" autofocus required class="form-control mx-auto w-auto" id="quantity" name="quantity" placeholder="Quantity" type="number">
+            </div>
+        </div>
+
+        <div class="mb-3 row center">
+            <div class="col-auto">
+                <label for="price" class="col-form-label">R</label>
+            </div>
+            <div class="col-auto">
+                <input class="form-control mx-auto w-auto" required id="price" name="price" placeholder="Price" type="text">
+            </div>
+        </div>
+
+        <div class="mb-3 row center">
+            <div class="col-auto">
+                <label for="picture" class="col-form-label">Add Product Picture</label>
+            </div>
+            <div class="col-auto">
+                <input class="form-control mx-auto w-auto" required id="picture" name="picture" type="file">
+            </div>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Add Product</button>
+    </form>
+{% endblock %}

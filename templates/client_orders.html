@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Orders
+{% endblock %}
+
+{% block main %}
+    <h1>All Orders</h1>
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Order Number</th>
+                <th scope="col">Order Status</th>
+                <th scope="col">Date of Order Placed</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+                <tr>
+                    <td class="small_col"><a href="/view_order/{{order['order_no']}}">{{ order["order_no"] }}</a></td>
+                    <td class="small_col">{{ order["status"] }}</td>
+                    <td class="small_col">{{ order["date"] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+<!DOCTYPE html>

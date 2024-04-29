@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Update Product
+{% endblock %}
+
+{% block main %}
+    <h1>Update Product</h1>
+    <form action="/edit_product/{{product_id}}" enctype=multipart/form-data method="post">
+
+        <div class="mb-3 row align-items-center center">
+            <div class="col-auto align_right">
+                <label for="description" class="col-form-label">Product Description</label>
+            </div>
+            <div class="col-auto align_left">
+                <input autocomplete="off" autofocus required class="form-control product_input" id="description" name="description" type="text" value="{{description}}" required>
+            </div>
+        </div>
+
+        <div class="mb-3 row align-items-center center">
+            <div class="col-auto align_right">
+                <label for="quantity" class="col-form-label">Product Quantity</label>
+            </div>
+            <div class="col-auto align_left">
+                <input autocomplete="off" autofocus required class="form-control mx-auto w-auto" id="quantity" name="quantity" type="number" value={{qty_on_hand}} required>
+            </div>
+        </div>
+
+        <div class="mb-3 row align-items-center center">
+            <div class="col-auto align_right">
+                <label for="price" class="col-form-label">R</label>
+            </div>
+            <div class="col-auto align_left">
+                <input class="form-control mx-auto w-auto" required id="price" name="price" type="text" value="{{price}}" required>
+            </div>
+        </div>
+
+        <div class="mb-3 row align-items-center center">
+            <div class="col-auto align_right">
+                <label for="picture" class="col-form-label">Add Product Picture</label>
+            </div>
+            <div class="col-auto align_left">
+                <input class="form-control mx-auto w-auto" id="picture" name="picture" type="file">
+            </div>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Update Product</button>
+    </form>
+{% endblock %}

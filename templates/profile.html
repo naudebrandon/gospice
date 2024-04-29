@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Profile
+{% endblock %}
+
+{% block main %}
+    <div class="grid-container-profile">
+        <div id="client">
+            <h2>Personal Details</h2>
+            <p>{{fullname}}</p>
+            <p>{{phone_number}}</p>
+            <p>{{username}}</p>
+            <a href="/update_profile"><button class="btn btn-secondary">Update Details</button></a>
+        </div>
+
+        <div id="address">
+            <h2>Delivery Address</h2>
+            <p>{{building_no}}</p>
+            <p>{{street_address}}</p>
+            <p>{{city}}</p>
+            <p>{{province}}</p>
+            <p>{{postal_code}}</p>
+        </div>
+        <div id="u-password">
+            <h2>Change Password</h2>
+            <form class="form-inline" action="/profile" method="post">
+                <div>
+                    <label for="old_password" class="col-form-label">Enter Old Password</label>
+                    <input autocomplete="off" autofocus required class="form-control" id="old_password" name="old_password" placeholder="Old Password" type="password">
+
+                    <label for="new_password" class="col-form-label">Enter New Password</label>
+                    <input autocomplete="off" autofocus required class="form-control" id="new_password" name="new_password" placeholder="New Password" type="password">
+
+                    <label for="confirm_password" class="col-form-label">Confirm New Password</label>
+                    <input autocomplete="off" autofocus required class="form-control" id="confirm_new_password" name="confirm_new_password" placeholder="Confirm Password" type="password">
+                </div>
+
+                <button id="c-pass-btn" class="btn btn-secondary" type="submit">Update Password</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

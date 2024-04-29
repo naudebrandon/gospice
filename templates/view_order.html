@@ -1,0 +1,138 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Order
+{% endblock %}
+
+{% block main %}
+    <h1>Order#{{order_no}}</h1>
+
+    {% if session["account"] == 1 %}
+        <table>
+            <thead>
+                <tr>
+                <th scope="col"></th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Description</th>
+                <th scope="col">Price</th>
+                <th scope="col">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in ordered_items %}
+                    <tr>
+                        <td class="small_col"><img class="table_photo" src="{{item['photo']}}" alt="Picture of {{item['description']}}"></image></td>
+                        <td class="small_col">{{item['quantity']}}</td>
+                        <td class="small_col">{{item['description']}}</td>
+                        <td class="small_col">{{item['price']}}</td>
+                        <td class="small_col">{{item['total']}}</td>
+                    </tr>
+                {% endfor %}
+                    <tr></tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="grand-total"> Order Total: {{order_total}}</td>
+                    </tr>
+            </tbody>
+        </table>
+
+        <!--Update Order-->
+            <div class="grid-container-order">
+                <div id="update-order">
+                    <form action="/view_order/{{order_no}}"  method="post">
+                        <h3>Order Status</h3>
+                        {% if get_status == "Received" %}
+                            <div class="form-check">
+                                <input type="radio" id="received" name="status" value="Received" checked/>
+                                <label class="form-check-label" for="received">Received</label>
+                            </div>
+                        {% else %}
+                            <div class="form-check">
+                                <input type="radio" id="received" name="status" value="Received"/>
+                                <label class="form-check-label" for="received">Received</label>
+                            </div>
+                        {% endif %}
+
+                        {% if get_status == "Shipped" %}
+                            <div class="form-check">
+                                <input type="radio" id="shipped" name="status" value="Shipped" checked/>
+                                <label class="form-check-label" for="shipped">Shipped</label>
+                            </div>
+                        {% else %}
+                            <div class="form-check">
+                                <input type="radio" id="shipped" name="status" value="Shipped"/>
+                                <label class="form-check-label" for="shipped">Shipped</label>
+                            </div>
+                        {% endif %}
+
+                        {% if get_status == "Delivered" %}
+                            <div class="form-check">
+                                <input type="radio" id="delivered" name="status" value="Delivered" checked/>
+                                <label class="form-check-label" for="delivered">Delivered</label>
+                            </div>
+                        {% else %}
+                            <div class="form-check">
+                                <input type="radio" id="delivered" name="status" value="Delivered"/>
+                                <label class="form-check-label" for="delivered">Delivered</label>
+                            </div>
+                        {% endif %}
+
+                        <button class="btn btn-primary" type="submit">Update Order</button>
+                    </form>
+                </div>
+
+                <div id="ship-to">
+                     <!--Ship To-->
+                     <h3>Ship To:</h3>
+                     {% for info in user_info %}
+                        <p>{{info['fullname']}}</p>
+                        <p>{{info['phone_number']}}</p>
+                        <hr>
+                        <p>{{info['building_no']}}</p>
+                        <p>{{info['street_address']}}</p>
+                        <p>{{info['city']}}</p>
+                        <p>{{info['province']}}</p>
+                        <p>{{info['postal_code']}}</p>
+                    {% endfor %}
+                </div>
+            </div>
+
+    {% else %}
+        <table>
+            <thead>
+                <tr>
+                <th scope="col"></th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Description</th>
+                <th scope="col">Price</th>
+                <th scope="col">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in ordered_items %}
+                    <tr>
+                        <td class="small_col"><img class="table_photo" src="{{item['photo']}}" alt="Picture of {{item['description']}}"></image></td>
+                        <td class="small_col">{{item['quantity']}}</td>
+                        <td class="small_col">{{item['description']}}</td>
+                        <td class="small_col">{{item['price']}}</td>
+                        <td class="small_col">{{item['total']}}</td>
+                    </tr>
+                {% endfor %}
+                    <tr></tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="grand-total"> Order Total: {{order_total}}</td>
+                    </tr>
+            </tbody>
+        </table>
+    {% endif %}
+
+{% endblock %}
+
+

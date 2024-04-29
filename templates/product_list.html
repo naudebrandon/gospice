@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Product List
+{% endblock %}
+
+{% block main %}
+    <h1>Product List</h1>
+    <table>
+        <thead>
+            <tr>
+            <th scope="col">Product ID</th>
+            <th scope="col"></th>
+            <th scope="col">Description</th>
+            <th scope="col">Quantity on Hand</th>
+            <th scope="col">Price</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+                <tr>
+                    <td class="small_col">{{product["id"]}}</td>
+                    <td class="small_col"><img class="table_photo" src="{{product['photo']}}" alt="Picture of {{ product['description']}}"></image></td>
+                    <td>{{ product["description"]}}</td>
+                    <td class="small_col">{{ product["qty_on_hand"]}}</td>
+                    <td class="small_col">{{ product["price"]}}</td>
+                    <td><a href="/edit_product/{{product['id']}}"><button class="btn btn-warning">Edit Product</button></a></td>
+                    <td><a href="/delete_product/{{product['id']}}"><button class="btn btn-danger">Delete Product</button></a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+<!DOCTYPE html>
